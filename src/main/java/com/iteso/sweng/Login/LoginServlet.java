@@ -1,7 +1,13 @@
 package com.iteso.sweng.Login;
 
+import com.iteso.sweng.Pool.LeavePool;
+import com.iteso.sweng.Pool.MyObjects;
+import com.iteso.sweng.Pool.SelectPoolMode;
+
 import javax.servlet.http.*;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  * User: Jonas
@@ -42,14 +48,49 @@ public class LoginServlet extends HttpServlet {
                 case VALID_USER_AND_PASSWORD:
                     // Write the response message, in an HTML page
                     try {
+
+
+                       // LeavePool lp = new LeavePool();
+                        // lp.DeleteUserFromPool("sebas","pool_10");
+
+                        MyObjects o = new MyObjects();
+
+                       ArrayList<String> teams= o.getMyTeams("Mauricio");
+                        ArrayList<String> leagues=  o.getMyLeagues("Mauricio");
+
+                        SelectPoolMode sp = new SelectPoolMode();
+
+                        sp.SelectPoolMode(2,"Pool_10","Mauricio");
+
+
+
                         out.println("<html>");
                         out.println("<head><title>Valid user and password</title></head>");
                         out.println("<body>");
+
+                        out.println("<p>My teams</p><br>");
+                        for (String team: teams){
+                            out.println("<br>"+team);
+                        }
+
+                        out.println("<p>My Leagues</p><br>");
+                        for (String league: leagues){
+                            out.println("<br>"+league);
+                        }
+                        out.println("<br>"+sp.frase);
+
                         out.println("<h1> Dummy page </h1>");
                         // Echo client's request information
                         out.println("<p>Welcome, " + unsecureUserName + "</p>");
+
+
                         out.println("<p>Verification Number: <strong>" + Math.random() + "</strong></p>");
+
                         out.println("</body></html>");
+
+
+
+
                     } finally {
                         out.close();  // Always close the output writer
                     }
