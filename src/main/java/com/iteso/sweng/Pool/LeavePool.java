@@ -1,4 +1,4 @@
-package com.iteso.sweng.Pool;
+    package com.iteso.sweng.Pool;
 
 import java.sql.*;
 
@@ -15,7 +15,7 @@ public class LeavePool {
             Connection con = DriverManager.getConnection("jdbc:mysql://www.db4free.net:3306/quinielero","quinielero2014","quinielero");
             Statement stmt = con.createStatement();
 
-            stmt.executeUpdate("delete from PoolParticipants where username='"+user+"' and poolname='"+pool+"';");
+            stmt.executeUpdate("delete from PoolParticipants where username='"+"sebas"+"' and poolname='"+"pool_10"+"';");
             //ResultSet rs = stmt.executeQuery("SELECT * FROM PoolParticipants");
 
             stmt.close();
@@ -24,7 +24,7 @@ public class LeavePool {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("holi");
+            System.out.println("NO SIRVE JODER");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
